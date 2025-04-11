@@ -52,18 +52,9 @@
 
         <Button
             android:id="@+id/buttonAddMatch"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nova Partida"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/buttonAddPlayer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Novo Jogador"/>
+            android:text="Nova Partida"/>
     </LinearLayout>
 
 </LinearLayout> 

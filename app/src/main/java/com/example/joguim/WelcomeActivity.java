@@ -35,7 +35,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView textViewUsername;
     private Button buttonLogout;
     private Button buttonAddMatch;
-    private Button buttonAddPlayer;
     private Button buttonEditProfile;
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
@@ -76,7 +75,6 @@ public class WelcomeActivity extends AppCompatActivity {
             textViewUsername = findViewById(R.id.textViewUsername);
             buttonLogout = findViewById(R.id.buttonLogout);
             buttonAddMatch = findViewById(R.id.buttonAddMatch);
-            buttonAddPlayer = findViewById(R.id.buttonAddPlayer);
             buttonEditProfile = findViewById(R.id.buttonEditProfile);
             viewPager = findViewById(R.id.viewPager);
             tabLayout = findViewById(R.id.tabLayout);
@@ -100,6 +98,8 @@ public class WelcomeActivity extends AppCompatActivity {
             }
 
             buttonEditProfile.setOnClickListener(v -> showEditProfileDialog());
+            buttonLogout.setOnClickListener(v -> logout());
+            buttonAddMatch.setOnClickListener(v -> showAddMatchDialog());
 
             Log.d("WelcomeActivity", "Views inicializadas com sucesso. UserId: " + userId);
         } catch (Exception e) {
@@ -192,15 +192,8 @@ public class WelcomeActivity extends AppCompatActivity {
         // Configurar o botão de adicionar partida
         buttonAddMatch.setOnClickListener(v -> showAddMatchDialog());
 
-        // Configurar o botão de adicionar jogador
-        buttonAddPlayer.setOnClickListener(v -> showAddPlayerDialog());
-
         // Configurar o botão de logout
-        buttonLogout.setOnClickListener(v -> {
-            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
+        buttonLogout.setOnClickListener(v -> logout());
     }
 
     private class ViewPagerAdapter extends FragmentStateAdapter {
@@ -330,65 +323,6 @@ public class WelcomeActivity extends AppCompatActivity {
         textView.setText("Data e hora: " + sdf.format(calendar.getTime()));
     }
 
-    private void showAddPlayerDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_player, null);
-
-        EditText editTextPlayerName = dialogView.findViewById(R.id.editTextPlayerName);
-        Spinner spinnerPosition = dialogView.findViewById(R.id.spinnerPosition);
-        SeekBar seekBarLevel = dialogView.findViewById(R.id.seekBarLevel);
-        TextView textViewLevel = dialogView.findViewById(R.id.textViewLevel);
-
-        // Configurar o Spinner de posições
-        String[] positions = new String[Player.Position.values().length];
-        for (int i = 0; i < Player.Position.values().length; i++) {
-            positions[i] = Player.Position.values()[i].getDisplayName();
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 
-            android.R.layout.simple_spinner_item, positions);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPosition.setAdapter(adapter);
-
-        // Configurar o SeekBar de nível
-        seekBarLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewLevel.setText("Nível: " + (progress + 1));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
-
-        builder.setView(dialogView)
-                .setTitle("Cadastrar Jogador")
-                .setPositiveButton("Cadastrar", (dialog, which) -> {
-                    String name = editTextPlayerName.getText().toString();
-                    if (name.isEmpty()) {
-                        Toast.makeText(this, "Por favor, informe o nome do jogador", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    Player.Position position = Player.Position.values()[spinnerPosition.getSelectedItemPosition()];
-                    int level = seekBarLevel.getProgress() + 1;
-
-                    Player player = new Player(name, position, level);
-                    long playerId = databaseHelper.addPlayer(player);
-                    if (playerId != -1) {
-                        player.setId(playerId);
-                        playersFragment.addPlayer(player);
-                        Toast.makeText(this, "Jogador cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "Erro ao cadastrar jogador", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
-    }
-
     private void showEditProfileDialog() {
         try {
             // Carregar dados atuais do usuário
@@ -471,5 +405,11 @@ public class WelcomeActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Erro ao abrir edição de perfil", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void logout() {
+        Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 } 
