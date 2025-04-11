@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="120dp"
+    android:viewportWidth="200"
+    android:viewportHeight="120">
+
+    <!-- Fundo da quadra -->
+    <path
+        android:fillColor="#FFE0B2"
+        android:pathData="M0,0 L200,0 L200,120 L0,120 Z"/>
+
+    <!-- Linhas da quadra -->
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="2"
+        android:pathData="M10,10 L190,10 L190,110 L10,110 Z"/>
+
+    <!-- Linha central -->
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="2"
+        android:pathData="M100,10 L100,110"/>
+
+    <!-- Rede -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1"
+        android:pathData="M98,5 L98,115 M102,5 L102,115"/>
+    
+    <!-- Linhas de ataque -->
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="1"
+        android:pathData="M40,10 L40,110 M160,10 L160,110"/>
+
+    <!-- Linhas laterais pontilhadas -->
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="1"
+        android:pathData="M10,40 L15,40 M20,40 L25,40 M30,40 L35,40 M40,40 L45,40 M50,40 L55,40 
+            M60,40 L65,40 M70,40 L75,40 M80,40 L85,40 M90,40 L95,40 M100,40 L105,40 
+            M110,40 L115,40 M120,40 L125,40 M130,40 L135,40 M140,40 L145,40 M150,40 L155,40 
+            M160,40 L165,40 M170,40 L175,40 M180,40 L185,40"/>
+    
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="1"
+        android:pathData="M10,80 L15,80 M20,80 L25,80 M30,80 L35,80 M40,80 L45,80 M50,80 L55,80 
+            M60,80 L65,80 M70,80 L75,80 M80,80 L85,80 M90,80 L95,80 M100,80 L105,80 
+            M110,80 L115,80 M120,80 L125,80 M130,80 L135,80 M140,80 L145,80 M150,80 L155,80 
+            M160,80 L165,80 M170,80 L175,80 M180,80 L185,80"/>
+
+</vector> 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione a Partida:"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jogadores por Time:"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupTeamSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButtonDupla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dupla (2 jogadores)"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonQuarteto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quarteto (4 jogadores)"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonSexteto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sexteto (6 jogadores)"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewConfirmedPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"/>
+
+</LinearLayout> 

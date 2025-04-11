@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <group
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:translateX="21.6"
+        android:translateY="21.6">
+        
+        <!-- Base da bola (círculo branco) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,24 A30,30 0 1,1 54,84 A30,30 0 1,1 54,24"/>
+            
+        <!-- Linhas da bola -->
+        <path
+            android:strokeColor="#000000"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M54,24 C42,30 36,42 36,54 C36,66 42,78 54,84"/>
+            
+        <path
+            android:strokeColor="#000000"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M54,24 C66,30 72,42 72,54 C72,66 66,78 54,84"/>
+            
+        <!-- Curvas horizontais -->
+        <path
+            android:strokeColor="#000000"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M24,54 Q54,48 84,54"/>
+            
+        <path
+            android:strokeColor="#000000"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M24,54 Q54,60 84,54"/>
+    </group>
+</vector>
